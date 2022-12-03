@@ -1,15 +1,16 @@
+from utils import stream_file
+
 SCORES = {"A": 1, "B": 2, "C": 3}
 BEATS = {"A": "C", "B": "A", "C": "B"}
 LOSES = dict([(v, k) for (k,v) in BEATS.items()])
 
 def total_score(move_fun):
     score = 0
-    with open("data/day/2/input.txt", 'r') as f:
-        for line in f:
-            [left, right] = line.strip().split(" ")
-            right = chr(ord(right) - 23)
-            right = move_fun(left, right)
-            score += move_score(right) + game_score(left, right)
+    for line in stream_file("data/day/2/input.txt"):
+        [left, right] = line.split(" ")
+        right = chr(ord(right) - 23)
+        right = move_fun(left, right)
+        score += move_score(right) + game_score(left, right)
 
     return score
 
@@ -37,8 +38,3 @@ def part2_move(left, right):
 
 def part2():
     return total_score(part2_move)
-
-
-if __name__ == "__main__":
-    print(part1())
-    print(part2())
