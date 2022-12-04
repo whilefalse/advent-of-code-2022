@@ -1,4 +1,6 @@
 echo "Getting day $1..."
 mkdir "data/day/$1"
+touch "data/day/$1/input.txt"
 mkdir "code/day/$1/"
 touch "code/day/$1/solution.py"
+echo "from utils import stream_file\n\ndef lines():\n    return stream_file(\"data/day/$1/input.txt\")\n\ndef part1():\n    pass\n\ndef part2():\n    pass" > "code/day/$1/solution.py"
