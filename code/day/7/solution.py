@@ -39,7 +39,6 @@ def parse():
     return root
 
 def visit(node):
-    small_dirs = []
     for child in node.children:
         visit(child)
         node.size += child.size
