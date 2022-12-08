@@ -1,3 +1,7 @@
+def load_file(path):
+    with open(path, 'r') as f:
+        return list(filter(lambda x: x != "", map(lambda x: x.rstrip(), f.readlines())))
+
 def stream_file(path):
      with open(path, 'r') as f:
         for line in f:
